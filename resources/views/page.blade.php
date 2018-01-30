@@ -7,11 +7,15 @@
     @yield('css')
 @stop
 
-@section('body_class', 'skin-' . config('adminlte.skin', 'blue') . ' sidebar-mini ' . (config('adminlte.layout') ? [
+@section('body_class')
+ skin-{!! config('adminlte.skin', 'blue') !!} 
+ {!! (config('adminlte.layout') ? [
     'boxed' => 'layout-boxed',
     'fixed' => 'fixed',
     'top-nav' => 'layout-top-nav'
-][config('adminlte.layout')] : '') . (config('adminlte.collapse_sidebar') ? ' sidebar-collapse ' : ''))
+][config('adminlte.layout')] : '') !!} 
+@if(config('adminlte.layout') != 'top-nav') sidebar-mini {!! (config('adminlte.collapse_sidebar') ? ' sidebar-collapse ' : '') !!}@endif
+@stop
 
 @section('body')
     <div class="wrapper">
